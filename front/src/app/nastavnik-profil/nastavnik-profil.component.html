@@ -1,0 +1,31 @@
+<div class="form-container">
+    <h1>Profil nastavnika</h1>
+    <div *ngIf="fileDownloaded">
+        <img [src]="fileDownloaded" alt="Downloaded Image" style="max-width: 50%; height: 300px;">
+    </div>
+    <p><strong>Ime:</strong> {{korisnik.ime}}</p>
+    <p><strong>Prezime:</strong> {{korisnik.prezime}}</p>
+    <p><strong>Email:</strong> {{korisnik.email}}</p>
+    <p><strong>Broj telefona:</strong> {{korisnik.telefon}}</p>
+    <p><strong>Predmeti: </strong>
+        <select>
+            <option *ngFor="let p of korisnik.zeljeZaPoducavanje">{{p.predmet}}</option>
+        </select>
+    </p>
+    <button (click)="zakaziCas()">Zakazivanje casa</button>
+    <div *ngIf="zakazivanje == true">
+        <h2>Zakazivanje casa</h2>
+        <p>Predmet: <select *ngIf="visePredmeta == true" [(ngModel)]="predmetCasa">
+                <option *ngFor="let p of korisnik.zeljeZaPoducavanje" value="p.predmet">{{p.predmet}}</option>
+            </select>
+            <select *ngIf="visePredmeta == false">
+                <option disabled selected>{{predmet}}</option>
+            </select>
+        </p>
+        <p>Datum i vreme: <input type="datetime-local" [(ngModel)]="datumCasa"></p>
+        <p>Tema casa: <input type="text" [(ngModel)]="temaCasa"></p>
+        <p>Zelim dupli cas: <input type="checkbox" [(ngModel)]="dupliCas"></p>
+        <button (click)="zakazivanjeCasa()">Zakazi cas</button>
+        {{message}}
+    </div>
+</div>

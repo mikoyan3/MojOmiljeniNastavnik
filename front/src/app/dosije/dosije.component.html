@@ -1,0 +1,29 @@
+<div class="dosije-container">
+    <h1>Ucenik: {{ucenik.ime}} {{ucenik.prezime}}</h1>
+    <div class="subject-group" *ngFor="let predmetGrupa of classesBySubjectAndDate">
+        <h2 class="subject-header" style="color: #8561a8;">Predmet: {{ predmetGrupa.predmet }}</h2>
+        <div class="date-group" *ngFor="let datumGrupa of predmetGrupa.classesByDate">
+            <h3 class="date-header" style="color: #8561a8;">Datum: {{ datumGrupa.date | date }}</h3>
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Tema</th>
+                    <th>Obradi cas</th>
+                </tr>
+                <tr *ngFor="let cas of datumGrupa.classes">
+                    <td>{{cas.id}}</td>
+                    <td>{{cas.tema}}</td>
+                    <td>
+                        <ng-container *ngIf="cas.status === 'ocenjen'">
+                            Vec ocenjeno
+                        </ng-container>
+                        <ng-container *ngIf="cas.status !== 'ocenjen'">
+                            <button (click)="oceniCas(cas)">Oceni</button>
+                        </ng-container>
+                    </td>
+                </tr>
+            </table>
+            <hr>
+        </div>
+    </div>
+  </div>

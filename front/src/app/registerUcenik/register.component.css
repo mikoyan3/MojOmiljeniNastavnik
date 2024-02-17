@@ -1,0 +1,41 @@
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-label {
+  margin-right: 10px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .login-container {
+    max-width: 600px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .login-container {
+    max-width: 500px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .login-container {
+    max-width: 400px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .login-container {
+    max-width: 300px;
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .login-container {
+    max-width: 250px;
+    padding: 10px;
+  }
+}

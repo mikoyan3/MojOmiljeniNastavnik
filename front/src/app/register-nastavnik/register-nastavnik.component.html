@@ -1,0 +1,91 @@
+<div class="login-container" *ngIf="registerFlag == false">
+    <h2 align="center">Register</h2>
+    <div class="input-field">
+      <label for="username">Username</label>
+      <input type="text" id="username" [(ngModel)]="username">
+    </div>
+    <div class="input-field">
+      <label for="password">Password</label>
+      <input type="password" id="password" [(ngModel)]="password">
+    </div>
+    <div class="input-field">
+      {{sigurnosnoPitanje}}
+      <input type="text" id="odgovor" [(ngModel)]="odgovor">
+    </div>
+    <div class="input-field">
+      <label for="ime">Ime</label>
+      <input type="text" id="ime" [(ngModel)]="ime">
+    </div>
+    <div class="input-field">
+      <label for="prezime">Prezime</label>
+      <input type="text" id="prezime" [(ngModel)]="prezime">
+    </div>
+    <div class="input-field checkbox-group">
+        <div class="checkbox-label">
+              Musko
+            <input type="checkbox" id="musko" [(ngModel)]="musko">
+        </div>
+        <div class="checkbox-label">
+            Zensko
+            <input type="checkbox" id="zensko" [(ngModel)]="zensko">
+        </div>
+    </div>
+    <div class="input-field">
+      <label for="adresa">Adresa</label>
+      <input type="text" id="adresa" [(ngModel)]="adresa">
+    </div>
+    <div class="input-field">
+      <label for="telefon">Telefon</label>
+      <input type="text" id="telefon" [(ngModel)]="telefon">
+    </div>
+    <div class="input-field">
+      <label for="email">Email</label>
+      <input type="text" id="email" [(ngModel)]="email">
+    </div>
+    <div class="input-field">
+      Profilna slika
+      <input type="file" id="profilePicture" (change)="onProfilePictureSelected($event)" name="file" accept="image/*" required>
+    </div>
+    <div class="input-field">
+        Radna biografija
+        <input type="file" id="CV" (change)="onCVSelected($event)" name="file" accept="image/*, application/pdf" required>
+      </div>
+    <div class="input-field">
+        Koje predmete zelite da poducavate?
+        <select [(ngModel)]="predmeti" multiple>
+            <option value="matematika">Matematika</option>
+            <option value="fizika">Fizika</option>
+            <option value="hemija">Hemija</option>
+            <option value="informatika">Informatika</option>
+            <option value="programiranje">Programiranje</option>
+            <option value="srpski jezik i knjizevnost">Srpski jezik i knjizevnost</option>
+            <option value="nemacki jezik">Nemacki jezik</option>
+            <option value="italijanski jezik">Italijanski jezik</option>
+            <option value="francuski jezik">Francuski jezik</option>
+            <option value="spanski jezik">Spanski jezik</option>
+            <option value="latinski jezik">Latinski jezik</option>
+            <option value="biologija">Biologija</option>
+            <option value="istorija">Istorija</option>
+            <option value="geografija">Geografija</option>
+            <option value="svet oko nas">Svet oko nas</option>
+            <option value="drugo">Drugo</option>
+        </select>
+        <br>
+        <span *ngIf="predmeti.includes('drugo')">Unesite ime predmeta: <input type="text" [(ngModel)]="dr"></span>
+    </div>
+    <div class="input-field">
+        Kom uzrastu zelite da predajete?
+        <select [(ngModel)]="uzrast" multiple>
+            <option value="osnovna skola 1-4 razred">Osnovna skola 1-4 razred</option>
+            <option value="osnovna skola 5-8 razred">Osnovna skola 5-8 razred</option>
+            <option value="srednja skola">Srednja skola</option>
+        </select>
+    </div>
+    <div class="input-field">
+        Gde ste culi za nas sajt?
+        <input type="text" [(ngModel)]="gdeSteCuli">
+    </div>
+    <button (click)="registerNastavnik()">Register</button>
+    <div class="error-message">{{errorMessage}}</div>
+  </div>
+  <div *ngIf="registerFlag == true">Uspesno ste poslali zahtev za registraciju!</div>

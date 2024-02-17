@@ -1,0 +1,76 @@
+<div class="dashboard-container">
+    <h1>Nastavnik Dashboard</h1>
+    <hr>
+    <div class="menu">
+        <button (click)="prikaziProfil()">Prikazi profil</button>
+        <button (click)="prikaziCasove()">Casovi</button>
+        <button (click)="prikaziMojeUcenike()">Moji ucenici</button>
+    </div>
+    <div class="profile-card" *ngIf="profilFlag == true && casoviFlag == false && uceniciFlag == false">
+        <div *ngIf="fileDownloaded">
+            <img [src]="fileDownloaded" alt="Downloaded Image" style="max-width: 50%; height: 300px;">
+        </div>
+        <p><strong>Ime:</strong> {{korisnik.ime}}</p>
+        <p><strong>Prezime:</strong> {{korisnik.prezime}}</p>
+        <p><strong>Adresa:</strong> {{korisnik.adresa}}</p>
+        <p><strong>Email:</strong> {{korisnik.email}}</p>
+        <p><strong>Broj telefona:</strong> {{korisnik.telefon}}</p>
+        <p><strong>Predmeti:</strong> <select>
+            <option *ngFor="let p of korisnik.zeljeZaPoducavanje">{{p.predmet}}</option>
+        </select></p>
+        <p><strong>Uzrast:</strong> <select>
+            <option *ngFor="let u of korisnik.zeljeZaUzrast">{{u.uzrast}}</option>
+        </select></p>
+        <p><button (click)="promeniProfil()">Promeni svoje podatke</button></p>
+    </div>
+    <div *ngIf="profilFlag == false && casoviFlag == true && uceniciFlag == false">
+        <h3>Sledecih 5 casova</h3>
+        <table>
+            <tr>
+                <th>Predmet</th>
+                <th>Ucenik</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let c of casoviNextThreeDays; let i = index">
+                <td>{{c.predmet}}</td>
+                <td>{{ucenici[i]?.ime}} {{ucenici[i]?.prezime}}</td>
+                <td><button *ngIf="c.dugme == true">Prikljuci se casu</button></td>
+            </tr>
+        </table>
+        <br>
+        <h3>Lista zahteva za casovima</h3>
+        <table>
+            <tr>
+                <th>Ucenik</th>
+                <th>Predmet</th>
+                <th>Tema</th>
+                <th>Prosecna ocena</th>
+                <th>Akcija</th>
+            </tr>
+            <tr *ngFor="let c of zatrazeniCasovi; let i = index">
+                <td>{{c.ucenik}}</td>
+                <td>{{c.predmet}}</td>
+                <td>{{c.tema}}</td>
+                <td *ngIf="uceniciZatrazeniCasovi[i].brojOcena >= 3">{{((+uceniciZatrazeniCasovi[i]?.ukupnaOcena)/(+uceniciZatrazeniCasovi[i]?.brojOcena)).toFixed(2)}}</td>
+                <td>Obrazlozenje: <input type="text" [(ngModel)]="obrazlozenje"><button style="margin-left: 10px;" (click)="potvrdi(c)">Potvrdi</button> <button style="margin-left: 10px;" (click)="odbij(c)">Odbij</button></td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="profilFlag == false && casoviFlag == false && uceniciFlag == true">
+        <h3>Ucenici</h3>
+        <table>
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Mail</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let u of allUcenici">
+                <td>{{u.ime}}</td>
+                <td>{{u.prezime}}</td>
+                <td>{{u.email}}</td>
+                <td><button (click)="prikaziDosije(u)">Prikazi dosije</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

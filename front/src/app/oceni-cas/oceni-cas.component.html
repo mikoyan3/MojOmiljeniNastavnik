@@ -1,0 +1,10 @@
+<div class="form-container">
+  <h1>Ocenjivanje casa</h1>
+  <h3>Ucenik: {{ucenik.ime}} {{ucenik.prezime}}</h3>
+  <h4>Cas: {{cas.predmet}} | Datum: {{cas.datum | date}}</h4>
+  <hr>
+  Ocena: <input type="number" min="1" max="5" [(ngModel)]="ocena">
+  Komentar: (opciono) <input type="text" [(ngModel)]="komentar">
+  <button (click)="oceni()" *ngIf="flagOcenjen == false">Oceni</button>
+  {{message}}
+</div>

@@ -1,0 +1,99 @@
+<div class="dashboard-container">
+    <h1>Ucenik Dashboard</h1>
+    <hr>
+  
+    <div class="menu">
+      <button (click)="prikaziProfil()">Prikazi profil</button>
+      <button (click)="prikaziNastavnike()">Prikazi nastavnike</button>
+      <button (click)="prikaziCasove()">Prikazi casove</button>
+    </div>
+  
+    <div class="profile-card" *ngIf="profileFlag == true && casovi == false">
+      <div *ngIf = "fileDownloaded">
+          <img [src]="fileDownloaded" alt="Downloaded Image" style="width: 50%; height: 300px;">
+      </div>
+      <p><strong>Ime:</strong> {{korisnik.ime}}</p>
+      <p><strong>Prezime:</strong> {{korisnik.prezime}}</p>
+      <p><strong>Adresa:</strong> {{korisnik.adresa}}</p>
+      <p><strong>Email:</strong> {{korisnik.email}}</p>
+      <p><strong>Broj telefona:</strong> {{korisnik.telefon}}</p>
+      <p><strong>Tip skole:</strong> {{korisnik.tipSkole}}</p>
+      <p><strong>Trenutni razred:</strong> {{korisnik.razred}}</p>
+      <p><button (click)="promeniProfil()">Promeni svoje podatke</button></p>
+    </div>
+      <div *ngIf="profileFlag == false && casovi == false">
+        <h2>Nastavnici</h2>
+        <table>
+          <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+          </tr>
+          <ng-container *ngFor="let l of listaNastavnika">
+            <tr>
+              <td>{{l.ime}}</td>
+              <td>{{l.prezime}}</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <a href="javascript:void(0);" (click)="profil(l)">Prikazi profil</a>
+              </td>
+            </tr>
+          </ng-container>
+        </table>
+        <h3>Sortiranje: </h3>
+        <select [(ngModel)]="sort">
+          <option value = "imeNeopadajuce">Sortiraj nastavnike po imenu neopadajuce</option>
+          <option value = "imeOpadajuce">Sortiraj nastavnike po imenu opadajuce</option>
+          <option value = "prezimeNeopadajuce">Sortiraj nastavnike po prezimenu neopadajuce</option>
+          <option value = "prezimeOpadajuce">Sortiraj nastavnike po prezimenu opadajuce</option>
+        </select>
+        <button (click)="sortiraj()">Sortiraj</button>
+        <button (click)="pretragaNastavnika()">Pretrazi nastavnike</button>
+        <div class="search" *ngIf = "pretraga == true && casovi == false">
+          <h3>Pretraga nastavnika</h3>
+          Ime: <input type="text" [(ngModel)]="ime">
+          Prezime: <input type="text" [(ngModel)]="prezime">
+          Predmet: <input type="text" [(ngModel)]="predmet">
+          <button (click)="nadjiNastavnika()">Pretrazi</button>
+          <p>{{message}}</p>
+          <div *ngFor = "let l of listaPretrazenih" class="card">
+          <h2>{{l.ime}} {{l.prezime}}</h2>
+          <p><strong>Adresa:</strong> {{l.adresa}}</p>
+          <p><strong>Email:</strong> {{l.email}}</p>
+          <p><strong>Telefon:</strong> {{l.telefon}}</p>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="profileFlag == false && casovi == true">
+        <h2>Arhivirani casovi</h2>
+        <table>
+          <tr>
+            <th>Predmet</th>
+            <th>Nastavnik</th>
+            <th>Datum</th>
+            <th>Tema</th>
+          </tr>
+          <tr *ngFor="let a of arhiviraniCasovi">
+            <td>{{a.predmet}}</td>
+            <td>{{a.nastavnik}}</td>
+            <td>{{formatirajDatum(a.datum)}}</td>
+            <td>{{a.tema}}</td>
+          </tr>
+        </table>
+        <h2>Nadolazeci casovi</h2>
+        <table>
+          <tr>
+            <th>Predmet</th>
+            <th>Nastavnik</th>
+            <th>Datum</th>
+            <th>Tema</th>
+          </tr>
+          <tr *ngFor="let a of nadolazeciCasovi">
+            <td>{{a.predmet}}</td>
+            <td>{{a.nastavnik}}</td>
+            <td>{{formatirajDatum(a.datum)}}</td>
+            <td>{{a.tema}}</td>
+          </tr>
+        </table>
+      </div>
+  </div>

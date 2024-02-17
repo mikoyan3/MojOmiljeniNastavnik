@@ -1,0 +1,52 @@
+<div class="container">
+    <h1>Dobro dosli na nasu aplikaciju</h1>
+    <hr>
+    <p>Ukupan broj ucenika: {{ukupanBrojUcenika}}</p>
+    <p>Ukupan broj nastavnika: {{ukupanBrojNastavnika}}</p>
+    <p>Broj casova odrzanih u poslednjih nedelju dana: {{brojOdrzanihCasovaUZadnjih7Dana}}</p>
+    <p>Broj casova odrzanih u poslednjih mesec dana: {{brojOdrzanihCasovaUZadnjih30Dana}}</p>
+    <p><button (click)="login()">Prijava na aplikaciju</button> <button (click)="prikaziOsnovneInfo()">Prikazi osnovne informacije o aplikaciji</button></p>
+    <div class="search">
+        <h3>Pretraga nastavnika</h3>
+        Ime: <input type="text" [(ngModel)]="ime">
+        Prezime: <input type="text" [(ngModel)]="prezime">
+        Predmet: <input type="text" [(ngModel)]="predmet">
+        <button (click)="pretraga()">Pretrazi</button>
+        <p>{{message}}</p>
+    </div>
+    <div *ngIf="flag == true && kartica == false; else cardDiv" class="table-container">
+        <table>
+            <tr>
+                <th>Predmet</th>
+                <th>Nastavnici</th>
+            </tr>
+            <tr *ngFor="let l of listaPredmeta">
+                <td><strong>{{l.predmet}}</strong></td>
+                <td>
+                    <select>
+                        <option *ngFor="let n of l.nastavnici">{{n.ime}} {{n.prezime}}</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <div class="button-container">
+            <button (click)="sortirajPredmeteNeopadajuce()">Sortiraj predmete neopadajuce</button>
+            <button (click)="sortirajPredmeteOpadajuce()">Sortiraj predmete opadajuce</button>
+            <button (click)="sortirajNeopadajucePoImenu()">Sortiraj neopadajuce nastavnike po imenu</button>
+            <button (click)="sortirajOpadajucePoImenu()">Sortiraj opadajuce nastavnike po imenu</button>
+            <button (click)="sortirajNeopadajucePoPrezimenu()">Sortiraj neopadajuce nastavnike po prezimenu</button>
+            <button (click)="sortirajOpadajucePoPrezimenu()">Sortiraj opadajuce nastavnike po prezimenu</button>
+        </div>
+    </div>
+    <ng-template #cardDiv>
+        <ng-container *ngIf="flag == true && kartica == true">
+            <div *ngFor="let l of listaNastavnika" class="card">
+                <h2>{{l.ime}} {{l.prezime}}</h2>
+                <p><strong>Adresa:</strong> {{l.adresa}}</p>
+                <p><strong>Email:</strong> {{l.email}}</p>
+                <p><strong>Telefon:</strong> {{l.telefon}}</p>
+            </div>
+        </ng-container>
+    </ng-template>
+</div>

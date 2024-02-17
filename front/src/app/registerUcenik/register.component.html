@@ -1,0 +1,66 @@
+<div class="login-container">
+    <h2 align="center">Register</h2>
+    <div class="input-field">
+      <label for="username">Username</label>
+      <input type="text" id="username" [(ngModel)]="username">
+    </div>
+    <div class="input-field">
+      <label for="password">Password</label>
+      <input type="password" id="password" [(ngModel)]="password">
+    </div>
+    <div class="input-field">
+      {{sigurnosnoPitanje}}
+      <input type="text" id="odgovor" [(ngModel)]="odgovor">
+    </div>
+    <div class="input-field">
+      <label for="ime">Ime</label>
+      <input type="text" id="ime" [(ngModel)]="ime">
+    </div>
+    <div class="input-field">
+      <label for="prezime">Prezime</label>
+      <input type="text" id="prezime" [(ngModel)]="prezime">
+    </div>
+    <div class="input-field checkbox-group">
+        <div class="checkbox-label">
+              Musko
+            <input type="checkbox" id="musko" [(ngModel)]="musko">
+        </div>
+        <div class="checkbox-label">
+            Zensko
+            <input type="checkbox" id="zensko" [(ngModel)]="zensko">
+        </div>
+    </div>
+    <div class="input-field">
+      <label for="adresa">Adresa</label>
+      <input type="text" id="adresa" [(ngModel)]="adresa">
+    </div>
+    <div class="input-field">
+      <label for="telefon">Telefon</label>
+      <input type="text" id="telefon" [(ngModel)]="telefon">
+    </div>
+    <div class="input-field">
+      <label for="email">Email</label>
+      <input type="text" id="email" [(ngModel)]="email">
+    </div>
+    <div class="input-field">
+      Profilna slika
+      <input type="file" id="profilePicture" (change)="onFileSelected($event)" name="file" accept="image/*" required>
+    </div>
+    <div class="input-field">
+      Tip skole
+      <select id="tipSkole" [(ngModel)]="tipSkole" (change)="onTipSkoleChange()">
+        <option value="osnovna">Osnovna</option>
+        <option value="srednja-gimnazija">Srednja gimnazija</option>
+        <option value="srednja-strucna">Srednja strucna</option>
+        <option value="srednja-umetnicka">Srednja umetnicka</option>
+      </select>
+    </div>
+    <div class="input-field">
+      Trenutni razred
+      <select id="razred" [(ngModel)]="trenutniRazred">
+        <option *ngFor="let option of razredi" [value]="option">{{option}}</option>
+      </select>
+    </div>
+    <button (click)="registerUcenik()">Register</button>
+    <div class="error-message">{{errorMessage}}</div>
+  </div>

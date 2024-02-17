@@ -1,0 +1,108 @@
+<h1>Admin Dashboard</h1>
+<hr>
+<button (click)="prikaziDijagrame()">Dijagrami</button>
+<button (click)="obradiZahteve()">Obrada zahteva</button>
+<div *ngIf="flagObradaZahteva == false">
+    <h2>Dijagrami statistika</h2>
+    <div class="grid-container">
+        <div class="grid-item">
+            <h4>Broj nastavnika po predmetu</h4>
+            <canvas #brojNastavnikaPoPredmetu></canvas>
+        </div>
+        <div class="grid-item">
+            <h4>Broj nastavnika po uzrastu</h4>
+            <canvas #brojNastavnikaPoUzrastu></canvas>
+        </div>
+        <div class="grid-item">
+            <h4>Raspodela muskih i zenskih nastavnika</h4>
+            <canvas #pitaNastavnik></canvas>
+        </div>
+        <div class="grid-item">
+            <h4>Raspodela muskih i zenskih ucenika</h4>
+            <canvas #pitaUcenik></canvas>
+        </div>
+        <div class="grid-item">
+            <h4>Prosecan broj casova po danima u nedelji</h4>
+            <canvas #histogram></canvas>
+        </div>
+        <div class="grid-item">
+            <h4>Pregled broja casova po mesecima za svakog nastavnika</h4>
+            <canvas #linijski></canvas>
+        </div>
+    </div>
+</div>
+<div *ngIf="flagObradaZahteva == true">
+    <h2>Zahtevi za registraciju</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Adresa</th>
+                    <th>Email</th>
+                    <th>Telefon</th>
+                    <th>Zelje za predmete</th>
+                    <th>Zelje za uzrast</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of pendingRequests">
+                    <td>{{p.ime}}</td>
+                    <td>{{p.prezime}}</td>
+                    <td>{{p.adresa}}</td>
+                    <td>{{p.email}}</td>
+                    <td>{{p.telefon}}</td>
+                    <td>
+                        <select>
+                            <option *ngFor="let zp of p.zeljeZaPoducavanje">{{zp.predmet}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select>
+                            <option *ngFor="let zu of p.zeljeZaUzrast">{{zu.uzrast}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button (click)="prikaziCV(p)">Prikazi CV</button>
+                    </td>
+                    <td>
+                        <button (click)="odobriNastavnika(p)">Odobri registraciju</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="file-download-section">
+        <div *ngIf="fileDownloaded" class="embed-container">
+            <iframe [src]="fileDownloaded" width="100%" height="100%"></iframe>
+        </div>
+    </div>
+    <div class="dodavanje-predmeta-section">
+        <h2>Dodavanje predmeta</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Predmet</th>
+                    <th>Nastavnik koji je predlozio</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of predmeti">
+                    <td>{{p.predmet}}</td>
+                    <td>{{p.zatrazio}}</td>
+                    <td><button (click)="odobri(p)">Odobri predmet</button></td>
+                </tr>
+            </tbody>
+        </table>
+        {{messageOdobren}}
+        <h2>Forma za dodavanje predmeta</h2>
+        <input type="text" placeholder="Predmet" [(ngModel)]="noviPredmet">
+        <button (click)="dodaj()">Dodaj predmet</button>
+        {{messageDodat}}
+    </div>
+</div>
