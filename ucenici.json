@@ -1,0 +1,30 @@
+[
+    {
+        "username": "Pavle",
+	"password": "Pavle1!",
+	"odgovorNaPitanje": "blabla",
+	"ime": "Pavle",
+	"prezime": "Perovic",
+	"pol": "m",
+	"adresa": "Bulevar 123",
+	"telefon": "0641111111",
+        "email" : "aca123",
+        "profilePictureUrl":"face2.jpg",
+	"tipSkole": "osnovna",
+	"razred": 5
+    },
+    {
+	"username": "marko",
+	"password": "Marko1!",
+	"odgovorNaPitanje": "blabla",
+	"ime": "Marko",
+	"prezime": "Markovic",
+	"pol": "m",
+	"adresa": "Bulevar 123",
+	"telefon": "0641111111",
+        "email" : "aca123",
+        "profilePictureUrl":"face1.jpg",
+	"tipSkole": "srednja",
+	"razred": 1
+    }
+]

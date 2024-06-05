@@ -1,0 +1,31 @@
+[
+    {
+        "username": "zika",
+	"password": "zika123",
+	"odgovorNaPitanje": "blabla",
+	"ime": "Zika",
+	"prezime": "Zikic",
+	"pol": "m",
+	"adresa": "Bulevar 1234",
+	"telefon": "0641111112",
+        "email" : "zika123",
+        "CVUrl":"Zika",
+	"zeljeZaPoducavanje":[
+	  {
+	    "predmet": "matematika"
+	  },
+	  {
+	    "predmet": "fizika"
+	  }
+	],
+	"zeljeZaUzrast":[
+	  {
+	    "uzrast": "Osnovna 1-4"
+	  },
+	  {
+	    "uzrast": "Srednja"
+	  }
+	],
+	"preporuka": "od prijatelja"
+    }
+]

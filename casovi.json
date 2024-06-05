@@ -1,0 +1,42 @@
+[
+    {
+        "predmet": "matematika",
+	"nastavnik": "nastavnik1",
+        "datum":{"$date": "2024-01-21T10:00:00Z"},
+	"ucenik": "Pavle",
+	"dupli": true,
+	"tema": "Priprema za kontrolni",
+	"status": "potvrdjen",
+	"id": 1
+    },
+    {
+        "predmet": "matematika",
+	"nastavnik": "nastavnik1",
+        "datum":{"$date": "2024-01-21T12:00:00Z"},
+	"ucenik": "marko",
+	"dupli": true,
+	"tema": "Priprema za kontrolni",
+	"status": "potvrdjen",
+	"id": 2
+    },
+    {
+	"predmet": "matematika",
+	"nastavnik": "nastavnik1",
+        "datum":{"$date": "2024-01-21T14:00:00Z"},
+	"ucenik": "Pavle",
+	"dupli": true,
+	"tema": "Priprema za kontrolni",
+	"status": "potvrdjen",
+	"id": 3
+    },
+    {
+	"predmet": "matematika",
+	"nastavnik": "nastavnik1",
+        "datum":{"$date": "2024-01-21T16:00:00Z"},
+	"ucenik": "marko",
+	"dupli": true,
+	"tema": "Priprema za kontrolni",
+	"status": "potvrdjen",
+	"id": 4
+    }
+]

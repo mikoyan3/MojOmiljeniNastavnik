@@ -1,0 +1,23 @@
+[
+    {
+        "idCasa": 3,
+	"ocena": 5,
+	"komentar": "Ponovi polinome",
+	"ucenik": "Marko",
+	"nastavnik": "nastavnik1"
+    },
+    {
+	"idCasa": 8,
+	"ocena": 3,
+	"komentar": "test",
+	"ucenik": "Marko",
+	"nastavnik": "nastavnik1"
+    },
+    {
+        "idCasa": 7,
+	"ocena": 3,
+	"komentar": "test",
+	"ucenik" : "Marko",
+	"nastavnik": "nastavnik1"
+    }
+]

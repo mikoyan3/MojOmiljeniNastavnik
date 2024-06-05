@@ -1,0 +1,92 @@
+[
+    {
+        "predmet": "matematika",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "Film studies",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "geografija",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "fizika",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "hemija",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "informatika",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "programiranja",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "srpski jezik i knjizevnost",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "engleski jezik",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "nemacki jezik",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "italijanski jezik",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "francuski jezik",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "spanski jezik",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "latinski jezik",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "biologija",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "istorija",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "svet oko nas",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    },
+    {
+        "predmet": "Test1",
+	"status": "odobren",
+	"zatrazio": "blabla"
+    }
+]
